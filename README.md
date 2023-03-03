@@ -6,7 +6,7 @@ User can enter values to either of the two textfields and the value for the othe
 
 # Installation
 
-You can download the zip, open it in an IDE like IntelliJ IDEA and run method main in class Main.
+You can download the zip, open the project in an IDE like IntelliJ IDEA then run method main in class Main.
 
 # Contact
 
