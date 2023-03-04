@@ -5,6 +5,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class UserInterface extends JFrame {
     UserInterface(double rate){
@@ -98,8 +100,8 @@ public class UserInterface extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {
                 try{
-                    double amount = Double.parseDouble(youSendTextField.getText());
-                    theyReceiveTextField.setText(String.valueOf(amount * rate));
+                    BigDecimal amount = new BigDecimal((youSendTextField.getText())).multiply(new BigDecimal(rate));
+                    theyReceiveTextField.setText(String.valueOf(amount));
                 }catch(Exception ex){
                     theyReceiveTextField.setText("");
                     youSendTextField.setText("");
@@ -135,8 +137,8 @@ public class UserInterface extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {
                 try {
-                    double value = Double.parseDouble(theyReceiveTextField.getText());
-                    youSendTextField.setText(String.valueOf(value / rate));
+                    BigDecimal amount = new BigDecimal((theyReceiveTextField.getText())).divide(new BigDecimal(rate), 2, RoundingMode.HALF_UP);
+                    youSendTextField.setText(String.valueOf(amount));
                 } catch (Exception ex) {
                     theyReceiveTextField.setText("");
                     youSendTextField.setText("");
